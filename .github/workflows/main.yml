@@ -27,8 +27,8 @@ jobs:
       - name: Slack Notification
         uses: act10ns/slack@v1
         with:
-          token: ${{ secrets.SLACK_WEBHOOK_URL }}
-          channel: '#awsnotify'
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          channel: "#awsnotify"
           message: ${{ env.MESSAGE }}
           status: 'Success' # or any other status you want to specify
 
