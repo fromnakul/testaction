@@ -25,7 +25,9 @@ jobs:
           python hello.py
           
       - name: Send message to Slack
-        uses: slackapi/slack-github-actions@v1.2.0
+        uses: slack/webhook@v5
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_MESSAGE: "Hello World"
+        with:
+          channel: '#awsnotify'  # Replace with the desired Slack channel name
+          text: Hello World
