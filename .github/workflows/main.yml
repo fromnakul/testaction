@@ -1,9 +1,8 @@
 name: Slack Notification
 
 on:
-  schedule:
-    - cron: "*/2 * * * *"
-
+  workflow_dispatch:
+  
 jobs:
   notify:
     runs-on: ubuntu-latest
