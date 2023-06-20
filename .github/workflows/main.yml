@@ -40,4 +40,4 @@ jobs:
     #     with:
     #       token: ${{ secrets.SLACK_WEBHOOK_URL }}
     #       channel: '#awsnotify'
-    #       message: ${{ steps.run-python-script.outputs.message }}
+   
