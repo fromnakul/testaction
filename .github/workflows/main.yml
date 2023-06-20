@@ -30,7 +30,7 @@ jobs:
           token: ${{ secrets.SLACK_WEBHOOK_URL }}
           channel: '#awsnotify'
           message: ${{ env.MESSAGE }}
-
+          status: 'Success' # or any other status you want to specify
 
 
 
