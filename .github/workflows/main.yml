@@ -2,7 +2,7 @@ name: Slack Notification
 
 on:
   schedule:
-    - cron: "50 15 * * *"
+    - cron: "56 14 * * *"
 
 jobs:
   notify:
