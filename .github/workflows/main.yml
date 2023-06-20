@@ -1,9 +1,8 @@
 name: Slack Notification
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: "*/2 * * * *"
 
 jobs:
   notify:
@@ -31,7 +30,6 @@ jobs:
           channel: "#awsnotify"
           message: ${{ env.MESSAGE }}
           status: 'Success' # or any other status you want to specify
-
 
 
 
