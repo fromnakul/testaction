@@ -9,10 +9,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create output file
+        run: echo "Hello World" > output.txt
+
       - name: Send message to Slack
         uses: slack/webhook@v5
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
           channel: '#awsnotify'  # Replace with the desired Slack channel name
-          text: Hello World
+          file: output.txt
+          initial_comment: "Here is the message:"
