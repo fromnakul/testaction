@@ -1,31 +1,31 @@
-name: Cron Job
+name: Slack Notification
 
 on:
-  schedule:
-    - cron: '*/2 * * * *'  # Runs every 2 minutes
   push:
     branches:
-      - main  # Replace with the desired branch name
+      - main
 
 jobs:
-  build:
+  notify:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          node-version: '16'  # Use Node.js 16
+          python-version: 3.x
 
-      - name: Run Hello World Python script
+      - name: Run Python script
         run: |
-          python hello.py
-          
-      - name: Send message to Slack
-        uses: appleboy/telegram-action@master
+          python hello.py > output.txt
+          echo "::set-output name=message::$(cat output.txt)"
+
+      - name: Slack Notification
+        uses: act10ns/slack@v1
         with:
-          to: ${{ secrets.SLACK_WEBHOOK_URL }}
-          message: Hello World
+          token: ${{ secrets.SLACK_WEBHOOK_URL }}
+          channel: '#awsnotify'
+          message: ${{ steps.run-python-script.outputs.message }}
