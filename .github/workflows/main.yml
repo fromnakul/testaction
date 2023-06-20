@@ -13,12 +13,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          python-version: '3.10'  # Replace 'x' with the desired Python version
+          node-version: '16'  # Use Node.js 16
 
       - name: Run Hello World Python script
         run: |
@@ -27,10 +27,5 @@ jobs:
       - name: Send message to Slack
         uses: appleboy/telegram-action@master
         with:
-          url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          method: post
-          body: |
-            {
-              "text": "Hello World",
-              "channel": "#awsnotify"
-            }
+          to: ${{ secrets.SLACK_WEBHOOK_URL }}
+          message: Hello World
