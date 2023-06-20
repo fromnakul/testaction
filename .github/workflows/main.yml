@@ -12,6 +12,6 @@ jobs:
       - name: Send message to Slack
         uses: slackapi/python-slack-sdk/send-message@1.3.0
         with:
-          channel: general  # Replace with the desired Slack channel name
+          channel: awsnotify  # Replace with the desired Slack channel name
           message: Hello World
           webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
