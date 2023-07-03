@@ -1,8 +1,8 @@
 name: Slack Notification
 
-on:
-  schedule:
-    - cron: "32 15 * * *"
+# on:
+#   schedule:
+#     - cron: "32 15 * * *"
 
 jobs:
   notify:
