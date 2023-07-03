@@ -1,34 +1,34 @@
-name: Slack Notification
+# name: Slack Notification
 
-# on:
-#   schedule:
-#     - cron: "32 15 * * *"
+# # on:
+# #   schedule:
+# #     - cron: "32 15 * * *"
 
-jobs:
-  notify:
-    runs-on: ubuntu-latest
+# jobs:
+#   notify:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
+#       - name: Set up Python
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: 3.9
 
-      - name: Run Python script
-        id: run-python-script
-        run: |
-          python hello.py > output.txt
-          echo "MESSAGE=$(cat output.txt)" >> $GITHUB_ENV
-      - name: Slack Notification
-        uses: act10ns/slack@v1
-        with:
-          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          channel: "#awsnotify"
-          message: ${{ env.MESSAGE }}
-          status: 'Success'
+#       - name: Run Python script
+#         id: run-python-script
+#         run: |
+#           python hello.py > output.txt
+#           echo "MESSAGE=$(cat output.txt)" >> $GITHUB_ENV
+#       - name: Slack Notification
+#         uses: act10ns/slack@v1
+#         with:
+#           webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+#           channel: "#awsnotify"
+#           message: ${{ env.MESSAGE }}
+#           status: 'Success'
 
 
 
